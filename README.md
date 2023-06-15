@@ -14,11 +14,15 @@ Projet réalisé en 2023 dans le cadre de la formation "Développeur web" d'Open
 
 Le projet consistait à créer le back-end et le front-end de l'application, en utilisant une **base de données**, un **framework JavaScript** et un **state manager**.
 
+# Lien vers l'application
+
+[https://covoit.onrender.com/](https://covoit.onrender.com/)
+
 # Dépôts
 
 Ce dépôt contient uniquement le **back-end** de l'application.
 
-Le front-end :
+Le front-end : <a href="https://github.com/TomDvpmt/covoit-frontend" target="_blank">https://github.com/TomDvpmt/covoit-frontend</a>
 
 # Technologies utilisées (MERN)
 
