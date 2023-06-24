@@ -6,36 +6,41 @@ const login = async (req, res, next) => {
     const email = req.body.email;
     const password = req.body.password;
 
-    const user = await User.findOne({ email });
+    try {
+        const user = await User.findOne({ email });
 
-    if (!user) {
-        return res
-            .status(401)
-            .json({ message: "Email ou mot de passe invalide." });
+        if (!user) {
+            return res
+                .status(401)
+                .json({ message: "Email ou mot de passe invalide." });
+        }
+
+        const isPasswordMatch = await bcrypt.compare(password, user.password);
+
+        if (!isPasswordMatch) {
+            return res
+                .status(401)
+                .json({ message: "Email ou mot de passe invalide." });
+        }
+
+        const token = jwt.sign(
+            { userId: user._id },
+            process.env.JWT_TOKEN_GENERATION_PHRASE
+        );
+
+        res.status(200).json({
+            message: "Utilisateur connecté.",
+            id: user._id,
+            token,
+            email: user.email,
+            firstName: user.firstName,
+            lastName: user.lastName,
+            phone: user.phone,
+        });
+    } catch (error) {
+        console.log(error);
+        return res.status(400).json({ message: "Connexion impossible." });
     }
-
-    const isPasswordMatch = await bcrypt.compare(password, user.password);
-
-    if (!isPasswordMatch) {
-        return res
-            .status(401)
-            .json({ message: "Email ou mot de passe invalide." });
-    }
-
-    const token = jwt.sign(
-        { userId: user._id },
-        process.env.JWT_TOKEN_GENERATION_PHRASE
-    );
-
-    res.status(200).json({
-        message: "Utilisateur connecté.",
-        id: user._id,
-        token,
-        email: user.email,
-        firstName: user.firstName,
-        lastName: user.lastName,
-        phone: user.phone,
-    });
 };
 
 const register = async (req, res, next) => {
