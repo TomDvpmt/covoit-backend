@@ -1,6 +1,6 @@
 <center>
 
-![Logo de Covoit'](/images/logo/covoit-logo-bicolor-on-white.png)
+![Logo de Covoit'](/images/logo/covoit-logo2.png)
 
 </center>
 
@@ -48,7 +48,7 @@ Le front-end : <a href="https://github.com/TomDvpmt/covoit-frontend" target="_bl
 
 <center>
 
-![Page d'accueil de Covoit'](/images/captures/covoit-home.webp)
+![Page d'accueil de Covoit'](/images/captures/covoit-home.png)
 
 </center>
 
